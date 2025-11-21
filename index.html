@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patient Dashboard — Jessica Taylor</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidenav">
+      <div class="brand">Coalition Test</div>
+      <nav>
+        <ul>
+          <li class="active">Patient</li>
+          <li>Dashboard</li>
+          <li>Reports</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <h1>Patient Overview</h1>
+      </header>
+
+      <section class="card patient-card" aria-label="patient-summary">
+        <div class="left">
+          <img id="avatar" src="" alt="Patient avatar" />
+        </div>
+        <div class="right">
+          <h2 id="patient-name">Loading...</h2>
+          <p id="patient-age-gender" class="muted"></p>
+          <p id="patient-other" class="muted small"></p>
+        </div>
+      </section>
+
+      <section class="card chart-card" aria-label="blood-pressure-chart">
+        <h3>Blood Pressure (Yearly)</h3>
+        <canvas id="bpChart" width="800" height="320"></canvas>
+      </section>
+
+      <section class="card details-card" aria-label="recent-vitals">
+        <h3>Recent Vitals</h3>
+        <ul id="vitals-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

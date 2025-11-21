@@ -1,0 +1,142 @@
+:root{
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;     /* blue for systolic */
+  --accent2: #ef4444;    /* red for diastolic */
+  --radius: 12px;
+  --gap: 18px;
+  --max-width: 1200px;
+  --page-padding: 20px;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.topbar{
+  background:transparent;
+  padding:18px var(--page-padding);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:var(--max-width);
+  margin:0 auto 8px;
+}
+.topbar h1{
+  margin:0;
+  font-size:1.25rem;
+  font-weight:600;
+  letter-spacing:0.2px;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns: 260px 1fr; /* sidebar + main */
+  gap:var(--gap);
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 var(--page-padding) 40px;
+  align-items:start;
+}
+
+/* make responsive: sidebar collapses under 880px */
+@media (max-width:880px){
+  .layout{ grid-template-columns: 1fr; padding:0 12px; }
+  .sidebar{ order:2; }
+  .content{ order:1; }
+}
+
+/* Cards */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  padding:18px;
+}
+
+/* Sidebar */
+.sidebar{
+  position:relative;
+}
+.patient-card{
+  padding:18px;
+  border-radius:10px;
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  text-align:left;
+}
+.patient-card h2{
+  margin:0 0 6px 0;
+  font-size:1rem;
+  font-weight:700;
+}
+.patient-card p{ margin:4px 0; color:var(--muted); font-size:0.9rem; }
+
+/* Content overview */
+.content{ display:flex; flex-direction:column; gap:var(--gap); }
+
+.patient-overview .overview-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+  margin-top:12px;
+}
+@media (max-width:720px){
+  .patient-overview .overview-grid{ grid-template-columns: 1fr; }
+}
+
+/* Chart section */
+.chart{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height:260px;
+  align-items:stretch;
+  justify-content:flex-start;
+}
+.chart canvas{
+  width:100% !important;
+  height:320px !important;  /* ensures the chart is visible */
+  border-radius:8px;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  padding:8px;
+}
+
+/* Legend */
+.legend{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  color:var(--muted);
+  font-size:0.92rem;
+}
+.legend .legend-item{
+  display:inline-block;
+  width:14px;
+  height:10px;
+  border-radius:3px;
+  margin-right:6px;
+  vertical-align:middle;
+}
+.legend .systolic{ background:var(--accent); }
+.legend .diastolic{ background:var(--accent2); }
+
+/* small utility */
+.stat{ color:var(--muted); font-size:0.95rem; }
+
+/* Improve links and buttons contrast */
+a, button{ color:var(--accent); text-decoration:none; }
+
+/* Accessibility: focus states */
+a:focus, button:focus{
+  outline:3px solid rgba(37,99,235,0.16);
+  outline-offset:2px;
+}
